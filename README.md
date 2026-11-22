@@ -27,17 +27,16 @@ field (all verified to exist — see `AGENTS.md` for the table).
 - **Loader/validation**: kit.hnl v1 has no loader or gate yet — this
   repo intentionally ships no gate script; manifest correctness is by
   inspection. Validation is pending loader work.
-- **Worker bindings (planned, not a lib repo)**: `Worker`/`DedicatedWorkerGlobalScope` WebIDL specs → `tool-sdkgen-webidl` → generated package inside `lib-js` (lib-dom pattern).
-  spawn / `postMessage` / `onmessage` / terminate over `js.call`, a
-  `self` side for worker-compiled entries, optional
-  SharedArrayBuffer/Atomics. Blocked on:
-  1. Worker WebIDL specs (none committed yet — lib-js currently has
-     only `dom.idl`/`html.idl`),
-  2. `tool-sdkgen-webidl` generation into a lib-js-style package,
-  3. a host `worker.spawn` Rust primitive (does not exist today).
-- **JS→handl callbacks**: no `on_event`/listener registration exists in
-  `lib-js` — worker `onmessage` needs a host injection or JS-side
-  trampoline.
+- **Worker bindings — LANDED (hand-written, `lib-js/src/worker`)**:
+  `js.construct`/`js.on`/`js.off` shims in `engine-compile-js`'s
+  `__handl_rt` prelude + `worker.{spawn,spawn_code,post_message,
+  terminate,on_message,on_message_self,self_post_message}` module.
+  Worker/`DedicatedWorkerGlobalScope`/`MessagePort` IDL already lives
+  in `lib-js/specs/html.idl:2657-2810`; durable fix is sdkgen
+  constructor/receiver-aware emission (T-backlog), worker module is
+  hand-written meanwhile. Still missing: worker-side compile entry
+  convention, `onerror` convenience, transfer-list ergonomics,
+  SharedArrayBuffer/Atomics, `lib-concurrent-js`.
 - **`lib-concurrent-js`** (optional, planned): `concurrent.Run` backend
   over MessageChannel/setTimeout.
 - **`lib-json-js`** (planned): generated JS JSON backend inside lib-js;
