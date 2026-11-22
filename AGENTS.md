@@ -43,10 +43,10 @@ binding itself is **not yet available** — see Pending.
   WebIDL specs → `tool-sdkgen-webidl` → a generated package inside
   `lib-js` (the lib-dom pattern), curated by this kit — not a standalone
   lib. It is deliberately **not** listed in `kit.hnl` yet.
-- **Host blocker**: the host has no `worker.spawn` primitive, and there
-  is no Worker WebIDL spec yet — the path is Worker specs →
-  `tool-sdkgen-webidl` → a `lib-js`-style generated package + the host
-  `worker.spawn` Rust primitive.
+- **Interop primitives**: no Rust `worker.spawn` needed (`new Worker`
+  is pure JS); Worker IDL already committed in `lib-js/specs/html.idl`.
+  Missing: `js.construct` + `js.on` event trampoline (lib-js decls +
+  engine-compile-js prelude shims) — implementation in progress.
 - **JS→handl callback**: same gap as kit-web-browser-iterop — no
   `on_event`/listener registration in `lib-js`; worker `onmessage`
   needs the host injection or JS-side trampoline.
