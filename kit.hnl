@@ -2,8 +2,8 @@
 -- (host/project/proposals/proposal-0004). libs entries are module
 -- names per each lib's pkg.hnl `modules:` field. Only real,
 -- existing modules are listed — the planned `worker` module
--- (lib-worker) does not exist yet; see README "Pending".
+-- worker WebIDL bindings do not exist yet; see README "Pending".
 { name: "kit-web-worker-iterop",
-  description: "Web Worker interop for handl-on-JS — JS call/invoke/await surface plus data plumbing (JSON, serialize port, str-js backend). Worker spawn/postMessage binding pending lib-worker.",
+  description: "Web Worker interop for handl-on-JS — JS call/invoke/await surface plus data plumbing (JSON, serialize port, str-js backend). Worker spawn/postMessage binding pending worker WebIDL bindings.",
   license: "MIT",
   libs: ["js", "json", "serialize", "str-js"], }

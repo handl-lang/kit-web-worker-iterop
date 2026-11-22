@@ -14,7 +14,7 @@ plumbing (`json`, `serialize`, `str-js`).
 
 ```hnl
 { name: "kit-web-worker-iterop",
-  description: "Web Worker interop for handl-on-JS — JS call/invoke/await surface plus data plumbing (JSON, serialize port, str-js backend). Worker spawn/postMessage binding pending lib-worker.",
+  description: "Web Worker interop for handl-on-JS — JS call/invoke/await surface plus data plumbing (JSON, serialize port, str-js backend). Worker spawn/postMessage binding pending worker WebIDL bindings.",
   license: "MIT",
   libs: ["js", "json", "serialize", "str-js"], }
 ```
@@ -27,7 +27,7 @@ field (all verified to exist — see `AGENTS.md` for the table).
 - **Loader/validation**: kit.hnl v1 has no loader or gate yet — this
   repo intentionally ships no gate script; manifest correctness is by
   inspection. Validation is pending loader work.
-- **`lib-worker` (planned, not listed)**: the actual Worker binding —
+- **Worker bindings (planned, not a lib repo)**: `Worker`/`DedicatedWorkerGlobalScope` WebIDL specs → `tool-sdkgen-webidl` → generated package inside `lib-js` (lib-dom pattern).
   spawn / `postMessage` / `onmessage` / terminate over `js.call`, a
   `self` side for worker-compiled entries, optional
   SharedArrayBuffer/Atomics. Blocked on:

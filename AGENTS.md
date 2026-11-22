@@ -39,10 +39,10 @@ binding itself is **not yet available** — see Pending.
 
 ## Pending / known gaps
 
-- **`lib-worker` does not exist.** The proposal's `worker` module
-  (spawn / postMessage / onmessage / terminate over `js.call`, `self`
-  side for worker-compiled entries, optional SharedArrayBuffer/Atomics)
-  is greenfield. It is deliberately **not** listed in `kit.hnl`.
+- **No `lib-worker` repo** (renamed decision): worker support is
+  WebIDL specs → `tool-sdkgen-webidl` → a generated package inside
+  `lib-js` (the lib-dom pattern), curated by this kit — not a standalone
+  lib. It is deliberately **not** listed in `kit.hnl` yet.
 - **Host blocker**: the host has no `worker.spawn` primitive, and there
   is no Worker WebIDL spec yet — the path is Worker specs →
   `tool-sdkgen-webidl` → a `lib-js`-style generated package + the host
