@@ -6,4 +6,4 @@
 { name: "kit-web-worker-iterop",
   description: "Web Worker interop for handl-on-JS — JS call/invoke/await surface plus data plumbing (JSON, serialize port, str-js backend). Worker spawn/postMessage binding pending worker WebIDL bindings.",
   license: "MIT",
-  libs: ["js", "json", "serialize", "str-js"], }
+  libs: ["js", "concurrent", "concurrent-js", "json", "json-js", "serialize", "str-js", "log", "log-js"], }

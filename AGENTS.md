@@ -29,9 +29,14 @@ code here and no gate script yet — validation is pending loader work.
 | module      | repo           | provides                                        |
 |-------------|----------------|-------------------------------------------------|
 | `js`        | lib-js         | JS interop — `call`/`invoke`/`await`, `JS` grade |
+| `concurrent`| lib-concurrent | cooperative concurrency contract (step-arrow)   |
+| `concurrent-js` | lib-concurrent-js | `concurrent` backend over `js.call`/`js.construct` |
 | `json`      | lib-json       | JSON codec + `json.parse`/`json.stringify`       |
+| `json-js`   | lib-json-js    | `json` backend over the JS `JSON` global         |
 | `serialize` | lib-serialize  | format-agnostic Serializer/Encoder/Decoder port  |
 | `str-js`    | lib-str-js     | `str` ports backend via `js.call`                |
+| `log`       | lib-log        | leveled logging contract (levels, attrs)         |
+| `log-js`    | lib-log-js     | `log` backend to `console.*` via the `js` ffi    |
 
 These are the *existing* modules a worker program needs on the JS host:
 the interop surface plus the data-marshalling plumbing. The Worker
@@ -50,11 +55,12 @@ binding itself is **not yet available** — see Pending.
 - **JS→handl callback**: same gap as kit-web-browser-iterop — no
   `on_event`/listener registration in `lib-js`; worker `onmessage`
   needs the host injection or JS-side trampoline.
-- **Optional later**: `lib-concurrent-js` backend implementing
-  `concurrent.Run` over MessageChannel/setTimeout so the task model
-  runs in-browser.
-- **`lib-json-js`**: no JS-generated JSON backend yet (`json` above is
-  the portable codec); planned as a generated package inside lib-js.
+- **`lib-concurrent-js`** has landed (module `concurrent-js`, deps
+  `concurrent` + `js`) and is listed above — `concurrent.Run` over the
+  JS scheduler primitives.
+- **`lib-json-js`** has landed as its own package (module `json-js`,
+  deps `json` + `js`) and is listed above — `json` remains the portable
+  contract.
 - The proposal's `plugins: ["compile-js"]` + `glue` are dropped under
   kit.hnl v1; `engine-compile-js` browser targets remain host-side.
 - **Validation**: kit.hnl has no loader/gate yet — manifest correctness

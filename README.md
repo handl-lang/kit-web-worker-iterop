@@ -16,7 +16,7 @@ plumbing (`json`, `serialize`, `str-js`).
 { name: "kit-web-worker-iterop",
   description: "Web Worker interop for handl-on-JS — JS call/invoke/await surface plus data plumbing (JSON, serialize port, str-js backend). Worker spawn/postMessage binding pending worker WebIDL bindings.",
   license: "MIT",
-  libs: ["js", "json", "serialize", "str-js"], }
+  libs: ["js", "concurrent", "concurrent-js", "json", "json-js", "serialize", "str-js", "log", "log-js"], }
 ```
 
 `libs` entries are module names per each lib's `pkg.hnl` `modules:`
@@ -36,11 +36,13 @@ field (all verified to exist — see `AGENTS.md` for the table).
   constructor/receiver-aware emission (T-backlog), worker module is
   hand-written meanwhile. Still missing: worker-side compile entry
   convention, `onerror` convenience, transfer-list ergonomics,
-  SharedArrayBuffer/Atomics, `lib-concurrent-js`.
-- **`lib-concurrent-js`** (optional, planned): `concurrent.Run` backend
-  over MessageChannel/setTimeout.
-- **`lib-json-js`** (planned): generated JS JSON backend inside lib-js;
-  `json` here is the portable codec.
+  SharedArrayBuffer/Atomics.
+- **`lib-concurrent-js`**: landed — module `concurrent-js` (deps
+  `concurrent` + `js`), `concurrent.Run` over the JS scheduler
+  primitives; listed above.
+- **`lib-json-js`**: landed as its own package — module `json-js`
+  (deps `json` + `js`) over the JS `JSON` global; listed above. `json`
+  remains the portable codec.
 
 ## License
 
