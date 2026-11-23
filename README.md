@@ -28,7 +28,7 @@ field (all verified to exist — see `AGENTS.md` for the table).
   repo intentionally ships no gate script; manifest correctness is by
   inspection. Validation is pending loader work.
 - **Worker bindings — LANDED (hand-written, `lib-js/src/worker`)**:
-  `js.construct`/`js.on`/`js.off` shims in `engine-compile-js`'s
+  `js.construct`/`js.on`/`js.off` shims in `tool-compile-js`'s
   `__handl_rt` prelude + `worker.{spawn,spawn_code,post_message,
   terminate,on_message,on_message_self,self_post_message}` module.
   Worker/`DedicatedWorkerGlobalScope`/`MessagePort` IDL already lives

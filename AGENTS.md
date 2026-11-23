@@ -51,7 +51,7 @@ binding itself is **not yet available** — see Pending.
 - **Interop primitives**: no Rust `worker.spawn` needed (`new Worker`
   is pure JS); Worker IDL already committed in `lib-js/specs/html.idl`.
   Missing: `js.construct` + `js.on` event trampoline (lib-js decls +
-  engine-compile-js prelude shims) — implementation in progress.
+  tool-compile-js prelude shims) — implementation in progress.
 - **JS→handl callback**: same gap as kit-web-browser-iterop — no
   `on_event`/listener registration in `lib-js`; worker `onmessage`
   needs the host injection or JS-side trampoline.
@@ -62,7 +62,7 @@ binding itself is **not yet available** — see Pending.
   deps `json` + `js`) and is listed above — `json` remains the portable
   contract.
 - The proposal's `plugins: ["compile-js"]` + `glue` are dropped under
-  kit.hnl v1; `engine-compile-js` browser targets remain host-side.
+  kit.hnl v1; `tool-compile-js` browser targets remain host-side.
 - **Validation**: kit.hnl has no loader/gate yet — manifest correctness
   is by inspection against the lib repos' `pkg.hnl`.
 
