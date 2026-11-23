@@ -32,7 +32,7 @@ field (all verified to exist — see `AGENTS.md` for the table).
   `__handl_rt` prelude + `worker.{spawn,spawn_code,post_message,
   terminate,on_message,on_message_self,self_post_message}` module.
   Worker/`DedicatedWorkerGlobalScope`/`MessagePort` IDL already lives
-  in `lib-js/specs/html.idl:2657-2810`; durable fix is sdkgen
+  in `lib-js/specs/html.idl:2657-2810`; durable fix is codegen
   constructor/receiver-aware emission (T-backlog), worker module is
   hand-written meanwhile. Still missing: worker-side compile entry
   convention, `onerror` convenience, transfer-list ergonomics,

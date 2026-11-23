@@ -45,7 +45,7 @@ binding itself is **not yet available** — see Pending.
 ## Pending / known gaps
 
 - **No `lib-worker` repo** (renamed decision): worker support is
-  WebIDL specs → `tool-sdkgen-webidl` → a generated package inside
+  WebIDL specs → `tool-codegen-webidl` → a generated package inside
   `lib-js` (the lib-dom pattern), curated by this kit — not a standalone
   lib. It is deliberately **not** listed in `kit.hnl` yet.
 - **Interop primitives**: no Rust `worker.spawn` needed (`new Worker`
