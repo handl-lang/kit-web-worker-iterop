@@ -21,10 +21,11 @@ code here and no gate script yet — validation is pending loader work.
 
 ## Layout
 
-- `kit.hnl` — the manifest. `libs` entries are module names per each
-  lib's `pkg.hnl` `modules:` field.
+- `kit.hnl` — the manifest. `libs` entries are package names — each resolves to
+  the sibling repo `lib-<name>` (`sibling_lib_dir` in
+  `host/crates/platform/src/config.rs`).
 
-## Curated libs (verified against pkg.hnl)
+## Curated libs (verified against pkg.hnl + repo names)
 
 | module      | repo           | provides                                        |
 |-------------|----------------|-------------------------------------------------|

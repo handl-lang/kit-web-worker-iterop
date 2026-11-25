@@ -1,6 +1,6 @@
 -- kit-web-worker-iterop: kit.hnl v1 — pure curation manifest
--- (host/project/proposals/proposal-0004). libs entries are module
--- names per each lib's pkg.hnl `modules:` field. Only real,
+-- (host/project/proposals/proposal-0004). libs entries are package
+-- names — each resolves to sibling repo `lib-<name>`. Only real,
 -- existing modules are listed — the planned `worker` module
 -- worker WebIDL bindings do not exist yet; see README "Pending".
 { name: "kit-web-worker-iterop",
